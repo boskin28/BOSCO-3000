@@ -4,3 +4,4 @@ pinecone-client
 python-dotenv
 time-python
 openai
+tiktoken
