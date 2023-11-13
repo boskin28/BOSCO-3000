@@ -3,3 +3,4 @@ streamlit
 pinecone-client
 python-dotenv
 time-python
+openai
