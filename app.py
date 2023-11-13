@@ -76,11 +76,3 @@ if prompt := st.chat_input("Ask me anything"):
 
     # Add assistant response to chat history
     st.session_state.messages.append({"role": "assistant", "content": full_response})
-
-    # Display assistant response in chat message container
-    with st.chat_message("assistant"):
-        st.write('**Excerpt:**')
-        st.write(docs)
-
-    # Add assistant response to chat history
-    st.session_state.messages.append({"role": "assistant", "content": full_response})
