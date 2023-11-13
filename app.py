@@ -11,11 +11,13 @@ load_dotenv()
 
 
 # Create an OpenAI embeddings instance
-OPENAI_API_KEY = os.getenv('OPENAI_API_KEY')
+# OPENAI_API_KEY = os.getenv('OPENAI_API_KEY')
+OPENAI_API_KEY = st.secrets['OPEN_API_KEY']
 embeddings = OpenAIEmbeddings(openai_api_key=OPENAI_API_KEY)
 
 # Initialize Pinecone docsearch
-PINECONE_API_KEY = os.getenv('PINECONE_API_KEY')
+# PINECONE_API_KEY = os.getenv('PINECONE_API_KEY')
+PINECONE_API_KEY = st.secrets['PINECONE_API_KEY']
 PINECONE_API_ENV = "gcp-starter"
 index_name = "testing"
 index = pinecone.init(api_key=PINECONE_API_KEY, environment=PINECONE_API_ENV)
