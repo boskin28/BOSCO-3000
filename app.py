@@ -11,7 +11,7 @@ load_dotenv()
 
 
 # Create an OpenAI embeddings instance
-OPENAI_API_KEY = st.secrets['OPEN_API_KEY']
+OPENAI_API_KEY = st.secrets['OPEN_KEY']
 embeddings = OpenAIEmbeddings(openai_api_key=OPENAI_API_KEY)
 
 # Initialize Pinecone docsearch
