@@ -1,13 +1,10 @@
 from langchain.vectorstores import Pinecone
 from langchain.embeddings.openai import OpenAIEmbeddings
-from langchain.llms import OpenAI
+from langchain.chat_models import ChatOpenAI
 from langchain.chains.question_answering import load_qa_chain
 import pinecone
 import streamlit as st
 import time
-import os
-from dotenv import load_dotenv
-load_dotenv()
 
 
 # Create an OpenAI embeddings instance
@@ -23,7 +20,7 @@ index = pinecone.init(api_key=PINECONE_API_KEY, environment=PINECONE_API_ENV)
 docsearch = Pinecone.from_existing_index(index_name, embeddings)
 
 # Create an OpenAI LLM (Language Model) instance
-llm = OpenAI(temperature=0, openai_api_key=OPENAI_API_KEY)
+llm = ChatOpenAI(temperature=0.5, openai_api_key=OPENAI_API_KEY, model='gpt-4')
 chain = load_qa_chain(llm, chain_type="stuff")
 
 # Create Question and Answer function
