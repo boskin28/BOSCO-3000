@@ -5,6 +5,8 @@ from langchain.chains.question_answering import load_qa_chain
 import pinecone
 import streamlit as st
 import time
+import hmac
+
 
 # Authentication:
 def check_password():
