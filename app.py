@@ -81,7 +81,7 @@ def QnA(question):
 # BEGIN WEBPAGE:
 
 # Title
-st.title("MTI 1000")
+st.title("BOSCO 3000")
 
 # Initialize chat history
 if "messages" not in st.session_state:
