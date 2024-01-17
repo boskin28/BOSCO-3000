@@ -1,8 +1,8 @@
-from langchain.vectorstores import Pinecone
+from langchain_community.vectorstores import Pinecone as LcPc
 from langchain.embeddings.openai import OpenAIEmbeddings
 from langchain.chat_models import ChatOpenAI
 from langchain.chains.question_answering import load_qa_chain
-import pinecone
+from pinecone import Pinecone
 import streamlit as st
 import time
 import hmac
@@ -66,8 +66,9 @@ PINECONE_API_KEY = st.secrets['PINECONE_API_KEY']
 PINECONE_API_ENV = "us-east4-gcp"
 index_name = "bosco3000"
 
-index = pinecone.init(api_key=PINECONE_API_KEY, environment=PINECONE_API_ENV)
-docsearch = Pinecone.from_existing_index(index_name, embeddings)
+pc = Pinecone(api_key=PINECONE_API_KEY)
+# index = pinecone.init(api_key=PINECONE_API_KEY, environment=PINECONE_API_ENV)
+docsearch = LcPc.from_existing_index(index_name, embeddings)
 
 # Create an OpenAI LLM (Language Model) instance
 llm = ChatOpenAI(temperature=0.3, openai_api_key=OPENAI_API_KEY, model='gpt-4')
