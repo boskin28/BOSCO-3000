@@ -6,3 +6,4 @@ time-python
 openai
 tiktoken
 langchain-community
+langchain-openai
