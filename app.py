@@ -1,6 +1,6 @@
 from langchain_community.vectorstores import Pinecone as LcPc
 from langchain.embeddings.openai import OpenAIEmbeddings
-from langchain.chat_models import ChatOpenAI
+from langchain_community.chat_models import ChatOpenAI
 from langchain.chains.question_answering import load_qa_chain
 from pinecone import Pinecone
 import streamlit as st
