@@ -63,7 +63,7 @@ embeddings = OpenAIEmbeddings(openai_api_key=OPENAI_API_KEY)
 
 # Initialize Pinecone docsearch
 PINECONE_API_KEY = st.secrets['PINECONE_API_KEY']
-PINECONE_API_ENV = "us-east4-gcp"
+PINECONE_API_ENV = st.secrets['ENVIRONMENT']
 index_name = st.secrets['INDEX_NAME']
 
 pc = Pinecone(api_key=PINECONE_API_KEY)
