@@ -1,12 +1,12 @@
 from langchain_community.vectorstores import Pinecone as LcPc
-from langchain.embeddings.openai import OpenAIEmbeddings
+from langchain_openai import OpenAIEmbeddings
 from langchain_community.chat_models import ChatOpenAI
 from langchain.chains.question_answering import load_qa_chain
 from pinecone import Pinecone
 import streamlit as st
 import time
-import hmac
 import re
+
 
 
 # Authentication:
@@ -31,7 +31,7 @@ def check_password():
             st.secrets.passwords[st.session_state["username"]],
         ):
             st.session_state["password_correct"] = True
-            
+
             # Don't store the username or password
             del st.session_state["password"]
             del st.session_state["username"]
@@ -56,16 +56,17 @@ if not check_password():
 
 
 # BEGIN WEBPAGE:
-
-# Create an OpenAI embeddings instance
 OPENAI_API_KEY = st.secrets['OPENAI_API_KEY']
-embeddings = OpenAIEmbeddings(openai_api_key=OPENAI_API_KEY)
-
-# Initialize Pinecone docsearch
 PINECONE_API_KEY = st.secrets['PINECONE_API_KEY']
 PINECONE_API_ENV = st.secrets['ENVIRONMENT']
 index_name = st.secrets['INDEX_NAME']
+page_title = st.secrets['PAGE_TITLE']
 
+
+# Create an OpenAI embeddings instance
+embeddings = OpenAIEmbeddings(openai_api_key=OPENAI_API_KEY)
+
+# Initialize Pinecone docsearch
 pc = Pinecone(api_key=PINECONE_API_KEY)
 # index = pinecone.init(api_key=PINECONE_API_KEY, environment=PINECONE_API_ENV)
 docsearch = LcPc.from_existing_index(index_name, embeddings)
@@ -84,7 +85,7 @@ def QnA(question):
 
 
 # Title
-st.title("BOSCO 3000")
+st.title(page_title)
 
 # Initialize chat history
 if "messages" not in st.session_state:
