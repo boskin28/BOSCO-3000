@@ -69,7 +69,7 @@ embeddings = OpenAIEmbeddings(openai_api_key=OPENAI_API_KEY)
 
 # Initialize Pinecone docsearch
 pc = Pinecone(api_key=PINECONE_API_KEY)
-# index = pinecone.init(api_key=PINECONE_API_KEY, environment=PINECONE_API_ENV)
+index = pinecone.init(api_key=PINECONE_API_KEY, environment=PINECONE_API_ENV)
 docsearch = LcPc.from_existing_index(index_name, embeddings)
 
 # Create an OpenAI LLM (Language Model) instance
