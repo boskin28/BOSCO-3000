@@ -1,6 +1,6 @@
 langchain
 streamlit
-pinecone-client
+pinecone-client[grpc]
 python-dotenv
 time-python
 openai
