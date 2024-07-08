@@ -2,7 +2,7 @@ from langchain_community.vectorstores import Pinecone as LcPc
 from langchain_openai import OpenAIEmbeddings
 from langchain_community.chat_models import ChatOpenAI
 from langchain.chains.question_answering import load_qa_chain
-from pinecone import Pinecone
+import pinecone
 import streamlit as st
 import time
 import re
@@ -69,7 +69,7 @@ embeddings = OpenAIEmbeddings(openai_api_key=OPENAI_API_KEY)
 
 # Initialize Pinecone docsearch
 pc = Pinecone(api_key=PINECONE_API_KEY)
-# index = pinecone.init(api_key=PINECONE_API_KEY, environment=PINECONE_API_ENV)
+index = pinecone.init(api_key=PINECONE_API_KEY, environment=PINECONE_API_ENV)
 docsearch = LcPc.from_existing_index(index_name, embeddings)
 
 # Create an OpenAI LLM (Language Model) instance
